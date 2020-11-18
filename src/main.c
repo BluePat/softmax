@@ -40,11 +40,12 @@ int argmax(float* arr, const int len) {
     float max = arr[0];
 
     for(int i = 0; i < len; ++i){
-        if(arr[i] > max){
+        if (arr[i] > max) {
             max = arr[i];
             index_max = i;
         }
     }
+
     return index_max;
 }
 
@@ -67,20 +68,18 @@ int main() {
     int input_vectors_count = 1;
     scanf("%d\n", &input_vectors_count);
 
-    float** pointers_array = (float**) malloc(input_vectors_count * sizeof(float*));
+    float* arr_pointer = allocate(INPUT_VECTOR_SIZE);
 
     for (int i = 0; i < input_vectors_count; i++) {
-        pointers_array[i] = allocate(INPUT_VECTOR_SIZE);
-        copyInputToField(pointers_array[i], INPUT_VECTOR_SIZE);
+        copyInputToField(arr_pointer, INPUT_VECTOR_SIZE);
 
-        float* current_softmax = softmax(pointers_array[i], INPUT_VECTOR_SIZE);
-        int current_argmax = argmax(pointers_array[i], INPUT_VECTOR_SIZE);
+        float* current_softmax = softmax(arr_pointer, INPUT_VECTOR_SIZE);
+        int current_argmax = argmax(arr_pointer, INPUT_VECTOR_SIZE);
 
         print_result(current_argmax, current_softmax, INPUT_VECTOR_SIZE);
-        free(pointers_array[i]);
     }
 
-    free(pointers_array);
+    free(arr_pointer);
 
     return 0;
 }
