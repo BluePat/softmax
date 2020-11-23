@@ -20,4 +20,4 @@ test:
 	diff tests/second/expected_stdout tests/second/test_stdout
 
 clean: 
-	  $(RM) program tests/first/test_stdout tests/second/test_stdout
+	$(RM) program tests/first/test_stdout tests/second/test_stdout

@@ -1,4 +1,5 @@
-
+# Exclude possible executables
 program
 
+# Exclude macOS specific folder metadata
 .DS_Store
